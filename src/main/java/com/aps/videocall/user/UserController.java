@@ -23,8 +23,6 @@ public class UserController {
 
     @PostMapping("/login")
     public User login(@RequestBody User user) {
-        System.out.println(user.getEmail() + "  " + user.getPassword());
-        findAll().forEach(System.out::println);
         return service.login(user);
     }
 
@@ -33,8 +31,9 @@ public class UserController {
         service.logout(email);
     }
 
-    @PostMapping("/all")
+    @GetMapping("/all")
     public List<User> findAll() {
+        System.out.println("call service findAll");
         return service.findAll();
     }
 

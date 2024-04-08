@@ -31,17 +31,16 @@ public class UserService {
     }
 
     public void logout(String email) {
-
-        USERS_LIST.forEach(System.out::println);
-
-//        var userIndex = IntStream.range(0, USERS_LIST.size())
-//                .filter(i -> USERS_LIST.get(i).getEmail().equals(email))
-//                .findAny()
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//        USERS_LIST.get(userIndex).setStatus("offline");
+        var userIndex = IntStream.range(0, USERS_LIST.size())
+                .filter(i -> USERS_LIST.get(i).getEmail().equals(email))
+                .findAny()
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        USERS_LIST.get(userIndex).setStatus("offline");
     }
 
     public List<User> findAll() {
+        System.out.println("call findAll");
+        USERS_LIST.forEach(System.out::println);
         return USERS_LIST;
     }
 }
