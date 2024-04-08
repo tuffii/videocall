@@ -11,7 +11,7 @@ public class UserService {
 
     private static final List<User> USERS_LIST = new ArrayList<>();
 
-    private void register(User user) {
+    public void register(User user) {
         user.setStatus("online");
         USERS_LIST.add(user);
     }
