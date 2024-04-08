@@ -39,8 +39,6 @@ public class UserService {
     }
 
     public List<User> findAll() {
-        System.out.println("call findAll");
-        USERS_LIST.forEach(System.out::println);
         return USERS_LIST;
     }
 }

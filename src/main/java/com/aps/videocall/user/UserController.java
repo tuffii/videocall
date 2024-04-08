@@ -27,13 +27,12 @@ public class UserController {
     }
 
     @PostMapping("/logout")
-    public void logout(@RequestBody String email) {
-        service.logout(email);
+    public void logout(@RequestBody User user) {
+        service.logout(user.getEmail());
     }
 
     @GetMapping("/all")
     public List<User> findAll() {
-        System.out.println("call service findAll");
         return service.findAll();
     }
 
