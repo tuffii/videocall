@@ -16,6 +16,13 @@ public class VideocallApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(UserService service) {
 		return args -> {
+
+			service.register(User.builder()
+					.username("123")
+					.email("123@yandex.ru")
+					.password("123")
+					.build());
+
 			service.register(User.builder()
 					.username("vuachik")
 					.email("vuachik@yandex.ru")

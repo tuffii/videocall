@@ -2,6 +2,7 @@ package com.aps.videocall.user;
 
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -21,20 +22,23 @@ public class UserService {
                 .filter(i -> USERS_LIST.get(i).getEmail().equals(user.getEmail()))
                 .findAny()
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        var connectedUser = USERS_LIST.get(userIndex);
-        if (!connectedUser.getPassword().equals(user.getPassword())) {
-            throw new RuntimeException("Incorrect user password");
+        var cUser = USERS_LIST.get(userIndex);
+        if (!cUser.getPassword().equals(user.getPassword())) {
+            throw new RuntimeException("Password incorrect");
         }
-        connectedUser.setStatus("online");
-        return connectedUser;
+        cUser.setStatus("online");
+        return cUser;
     }
 
     public void logout(String email) {
-        var userIndex = IntStream.range(0, USERS_LIST.size())
-                .filter(i -> USERS_LIST.get(i).getEmail().equals(email))
-                .findAny()
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        USERS_LIST.get(userIndex).setStatus("offline");
+
+        USERS_LIST.forEach(System.out::println);
+
+//        var userIndex = IntStream.range(0, USERS_LIST.size())
+//                .filter(i -> USERS_LIST.get(i).getEmail().equals(email))
+//                .findAny()
+//                .orElseThrow(() -> new RuntimeException("User not found"));
+//        USERS_LIST.get(userIndex).setStatus("offline");
     }
 
     public List<User> findAll() {
