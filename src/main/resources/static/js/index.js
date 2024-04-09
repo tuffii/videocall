@@ -1,6 +1,4 @@
 function loadAndDisplayUsers() {
-    console.log("load")
-
     const connectedUser = localStorage.getItem('connectedUser');
     if (!connectedUser) {
         window.location = 'login.html';
